@@ -5,11 +5,9 @@ class Home extends StatefulWidget {
   @override
   State<Home> createState() => _HomeState();
 }
-
 class _HomeState extends State<Home> {
   String name = '';
   String? nameData;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,7 +26,8 @@ class _HomeState extends State<Home> {
             ElevatedButton(
               onPressed: () async {
                 final prefs = await SharedPreferences.getInstance();
-                await prefs.setString('nameData', name); // 'key' , value
+                await prefs.setString('nameData', name);
+                //await prefs.setString('keyName', value);
               },
               child: Text('Save'),
             ),
@@ -44,6 +43,7 @@ class _HomeState extends State<Home> {
                   print(nameData);
                 },
                 child: Text('Get Data')),
+
             Text(nameData ?? '')
           ],
         ),
